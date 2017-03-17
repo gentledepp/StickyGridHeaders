@@ -3,14 +3,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:2.3.0+'
     }
 }
 apply plugin: 'android-library'
-
 android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.1"
+    compileSdkVersion 15
+    buildToolsVersion '25.0.0'
 
     sourceSets {
         main {
@@ -26,7 +25,9 @@ android {
         instrumentTest.setRoot('tests')
     }
 }
-
 task wrapper(type: Wrapper) {
     gradleVersion = "1.9"
+}
+
+dependencies {
 }
