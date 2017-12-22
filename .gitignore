@@ -23,3 +23,8 @@ target/
 gen-external-apklibs/
 build/
 .gradle/
+/Xamarin.StickyGridHeaders/obj
+/Xamarin.StickyGridHeaders/bin
+/Xamarin.StickyGridHeaders/.vs
+*.aar
+/Xamarin.StickyGridHeaders/*.bak

@@ -248,7 +248,7 @@ public class StickyGridHeadersBaseAdapterWrapper extends BaseAdapter {
         mDelegate.unregisterDataSetObserver(observer);
     }
 
-    private FillerView getFillerView(View convertView, ViewGroup parent, View lastViewSeen) {
+    /*private FillerView getFillerView(View convertView, ViewGroup parent, View lastViewSeen) {
         FillerView fillerView = (FillerView)convertView;
         if (fillerView == null) {
             fillerView = new FillerView(mContext);
@@ -257,15 +257,38 @@ public class StickyGridHeadersBaseAdapterWrapper extends BaseAdapter {
         fillerView.setMeasureTarget(lastViewSeen);
 
         return fillerView;
+    }*/
+    // fixing https://github.com/TonicArtos/StickyGridHeaders/issues/40
+    private FillerView getFillerView(View convertView, ViewGroup parent, View lastViewSeen) {
+        FillerView fillerView;
+        if(convertView instanceof FillerView){
+            fillerView = (FillerView)convertView;
+        }else{
+            //convertView==null also come here
+            fillerView = new FillerView(mContext);
+        }
+        fillerView.setMeasureTarget(lastViewSeen);
+        return fillerView;
     }
 
-    private HeaderFillerView getHeaderFillerView(int headerPosition, View convertView,
+    /*private HeaderFillerView getHeaderFillerView(int headerPosition, View convertView,
             ViewGroup parent) {
         HeaderFillerView headerFillerView = (HeaderFillerView)convertView;
         if (headerFillerView == null) {
             headerFillerView = new HeaderFillerView(mContext);
         }
 
+        return headerFillerView;
+    }*/
+    // fixing https://github.com/TonicArtos/StickyGridHeaders/issues/40
+    private HeaderFillerView getHeaderFillerView(int headerPosition, View convertView, ViewGroup parent) {
+        HeaderFillerView headerFillerView;
+        if(convertView instanceof HeaderFillerView){
+            headerFillerView = (HeaderFillerView)convertView;
+        }else{
+            // convertView==null also come here
+            headerFillerView = new HeaderFillerView(mContext);
+        }
         return headerFillerView;
     }
 
